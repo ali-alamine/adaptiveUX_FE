@@ -1,0 +1,13 @@
+<main class="pu-grid-form popup">
+  <section class="d-flex justify-content-end">
+    <i (click)="gridHelper.closePopup()" class="fa-solid fa-xmark pu-close-popup-btn pu-clickable-icon-shadow mRight20"></i>
+  </section>
+
+  <section class="pu-grid-form-fields-list d-flex flex-column">
+    <ng-container *ngFor="let field of gridFormFields; let i = index">
+      <input class="pu-grid-form-field" *ngIf="field.is_in_form" [type]="field.field_type" [placeholder]="field.field_title" [(ngModel)]="field.filled_value" />
+    </ng-container>
+
+    <input type="button" value="submit" (click)="submitForm()" />
+  </section>
+</main>

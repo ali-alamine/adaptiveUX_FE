@@ -1,0 +1,33 @@
+.pu-grid-form {
+    width: 100%;
+    height: auto;
+    // background-color: #f7f7f7;
+    border-radius: 0.5rem !important;
+    background-color: var(--primary-context-menu-bg-color);
+    opacity: 0.95;
+}
+
+.pu-close-popup-btn {
+    font-size: 1.5rem;
+    position: fixed;
+}
+
+.pu-grid-form-fields-list {
+    padding: 1rem;
+}
+
+.pu-grid-form-field {
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.pu-grid-form-field {
+    background-color: #fff;
+    opacity: 0.3;// #1e1944;
+}
+
+.pu-grid-form-field:focus {
+    background-color: #494376;
+    color: var(--primary-text-color);
+    font-weight: 600;
+}

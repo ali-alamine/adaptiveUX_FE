@@ -1,0 +1,123 @@
+.table {
+  // border-color: #625b70 !important;
+}
+
+.pu-dynamic-grid-header-cell {
+  font-weight: 500;
+}
+
+.pu-grid-column-filter {
+  background-color: var(--d-p-grid-filter-bg-color);
+  border-radius: 0.4rem;
+  text-align: center;
+  opacity: 0.5;
+  border: none;
+  width: 100% !important;
+  height: 1rem;
+}
+
+.pu-grid-column-filter:focus {
+  background-color: #b4a9c7;
+  opacity: 1;
+  outline: solid rgb(163, 163, 163) 2px;
+  font-weight: 400;
+  color: var(--d-p-grid-filter-font-color);
+  z-index: 9999;
+  width: 10rem;
+  height: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Ensure the input remains a numeric input field */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.pu-grid-sort-icon {
+  color: grey;
+}
+
+.pu-sort-up-icon {
+  opacity: 0.1;
+  margin-bottom: -15px
+}
+
+.pu-sort-none-icon {
+  opacity: 0.1;
+  font-size: 12px;
+  margin-right: 1px;
+}
+
+.pu-sort-down-icon {
+  margin-top: -13.2px;
+  opacity: 0.1;
+}
+
+.pu-active-sort-icon {
+  opacity: 1;
+}
+
+.pu-active-sort-none-icon {
+  opacity: 0.7;
+}
+
+.pu-selected-row {
+  box-shadow: var(--d-p-grid-selected-row-shadow);
+}
+
+.pu-grid-pinned-records {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+}
+
+.pu-grid-pin-icon {
+  font-size: 0.79rem !important;
+}
+
+.pu-grid-pin-icon:hover {
+  // box-shadow: 0px 1px 6px 1px #d9d9d9;
+  // border-radius: 1rem;
+  font-size: 0.9rem !important;
+  cursor: pointer;
+}
+
+.pu-grid-cell-text {
+  width: 100%;
+}
+
+// .table-striped>tbody>tr:nth-child(2n+1)>td,
+// .table-striped>tbody>tr:nth-child(2n+1)>th {
+//   background-color: #1e1944 !important;
+// }
+
+.pu-grid-row {
+  cursor: pointer;
+}
+
+.pu-grid-row:hover {
+  background-color: var(--d-p-grid-row-bg-color-hover);
+}
+
+.pu-grid-create-form-wrapper {
+  position: fixed;
+  width: 90%;
+  height: 70%;
+  overflow-y: scroll;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 9999;
+  opacity: 0.9;
+  box-shadow: 0px 0px 10px 0px #b4a9c7;
+  border-radius: 0.5rem !important;
+}

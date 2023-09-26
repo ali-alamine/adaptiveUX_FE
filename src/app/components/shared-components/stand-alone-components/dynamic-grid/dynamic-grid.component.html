@@ -1,0 +1,83 @@
+<main class="row">
+  <header class="col-12">
+    <pu-dynamic-grid-action-header></pu-dynamic-grid-action-header>
+  </header>
+  <div class="col-lg-12">
+    <div class="pu-dynamic-grid">
+      <div class="table-responsive">
+        <table #grid class="table table-striped table-sm align-middle">
+          <thead class="pu-dynamic-grid-header-cell">
+            <tr class="pu-no-select">
+              <ng-container *ngFor="let col of gridHelper.gridCols$ | async; let i = index">
+                <td *ngIf="!col.is_hidden" [style.width]="col.field_width + 'rem'" class="text-center align-top">
+                  <div (click)="col.is_sortable === 1 ? sortColumn(i, col.field_key) : ''" class="d-flex align-items-end justify-content-center cursor-pointer">
+                    <span>{{ col.field_title }}</span>
+                    <div *ngIf="col.is_sortable" class="d-flex flex-column mLeft10">
+                      <i class="pu-grid-sort-icon fa-solid fa-sort-up pu-sort-up-icon" [ngClass]="{ 'pu-active-sort-icon': selectedColumnIndex === i && sortType == 'ASC' }"></i>
+                      <i class="pu-grid-sort-icon pu-sort-none-icon" [ngClass]="{ 'pu-active-sort-none-icon': selectedColumnIndex === i && sortType == 'NONE' }">➖</i>
+                      <i class="pu-grid-sort-icon fa-solid fa-sort-down pu-sort-down-icon" [ngClass]="{ 'pu-active-sort-icon': selectedColumnIndex === i && sortType == 'DESC' }"></i>
+                    </div>
+                  </div>
+                  <input
+                    autocomplete="off"
+                    *ngIf="col.is_filterable"
+                    type="{{ col.filter_by }}"
+                    [(ngModel)]="col.filterValue"
+                    (ngModelChange)="debouncedSearchColumn(col.field_key, col.filterValue)"
+                    class="pu-grid-column-filter"
+                    placeholder="Locate"
+                    id="column_filter_{{ col.field_key }}"
+                  />
+                </td>
+              </ng-container>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              #tr
+              *ngFor="let row of gridHelper.gridRows$ | async; let i = index"
+              class="pu-grid-row text-center"
+              (contextmenu)="onRowContextMenu($event, row, i)"
+              (click)="selectRow(i)"
+              [ngClass]="{ 'pu-selected-row': selectedRowIndex === i }"
+            >
+              <ng-container *ngFor="let col of gridHelper.gridCols$ | async">
+                <td
+                  #td
+                  *ngIf="!col.is_hidden"
+                  (contextmenu)="onCellContextMenu($event, col.field_key, i, td)"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-delay="500"
+                  title="{{ row[col.field_key]?.length > 15 ? row[col.field_key] : '' }}"
+                >
+                  <span [ngClass]="{ 'pu-grid-pinned-records': showPinnedRecords(row.is_pinned, col.field_order) }">
+                    <i (click)="unPinRecord(row)" *ngIf="row.is_pinned && col.field_order == 0 && showPinnedRecords(row.is_pinned, col.field_order)" class="fa-solid fa-thumbtack pu-grid-pin-icon"></i>
+                    <span class="text-center pu-grid-cell-text">
+                      {{ row[col.field_key] | trimString : 15 }}
+                    </span>
+                  </span>
+                </td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <pu-dynamic-grid-paginator></pu-dynamic-grid-paginator>
+  </footer>
+
+  <ng-container *ngIf="gridHelper.showContextMenu$ | async">
+    <div class="pu-dynamic-grid-context-menu-wrapper">
+      <pu-dynamic-grid-context-menu></pu-dynamic-grid-context-menu>
+    </div>
+  </ng-container>
+</main>
+
+<ng-container *ngIf="gridHelper.isPopupVisible$ | async">
+  <div [ngClass]="{ 'pu-fadeIn pu-grid-create-form-wrapper': gridHelper.isPopupVisible$.getValue(), 'pu-fadeOut': !gridHelper.isPopupVisible$.getValue() }">
+    <pu-dynamic-grid-create-form></pu-dynamic-grid-create-form>
+  </div>
+</ng-container>

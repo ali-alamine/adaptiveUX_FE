@@ -1,0 +1,18 @@
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './global-style/pu-custom-style.scss';
+@import './global-style/app-theme.scss';
+@import './global-style/_variables.scss';
+
+
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> OVERRIDES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+
+/* Change tooltip background color and add padding */
+.tooltip-inner {
+    background-color: #909090 !important;
+    opacity: 0.99 !important;
+    color: black !important;
+    font-weight: 500;
+    border: none;
+}
+

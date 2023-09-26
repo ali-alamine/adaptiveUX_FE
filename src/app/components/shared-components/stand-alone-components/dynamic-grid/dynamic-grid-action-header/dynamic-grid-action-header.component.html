@@ -1,0 +1,27 @@
+<main class="d-flex justify-content-between mb-2">
+  <section>
+    <div class="d-flex">
+      <i class="fa-solid fa-plus pu-add-new pu-clickable-icon-shadow" (click)="gridHelper.openPopup()"></i>
+      <i class="fa-solid fa-download mLeft40 pu-clickable-icon-shadow" (click)="exportToExcel()"></i>
+    </div>
+  </section>
+  <section class="d-flex justify-content-around cursor-pointer">
+    <div class="dropdown cursor-pointer d-flex align-items-center dropstart">
+      <i class="mRight15 pu-clickable-arrow-icon-shadow dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"></i>
+      <div class="dropdown-menu">
+        <div class="d-flex justify-content-around icons-wrapper">
+          <ng-container *ngFor="let icon of gridStyleOptions; let i = index">
+            <i
+              (click)="gridHelper.toggleGridClass(icon, i)"
+              class="fa-solid {{ icon.iconClass }}"
+              [ngClass]="{
+                'pu-selected-grid-style-icon': (gridHelper.gridCssClasses$ | async).includes(icon.gridClass)
+              }"
+            ></i>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <input type="search" placeholder="Find.." class="pu-grid-global-search" />
+  </section>
+</main>

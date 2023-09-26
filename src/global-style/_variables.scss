@@ -1,0 +1,51 @@
+:root {
+    --d-p-bg-color: #171238;
+    --primary-text-color: #b4a9c7;
+    --primary-icon-color: #b4a9c7;
+    --primary-icon-bg-color: #756d88;
+
+    //Main menu
+    --d-menu-hover: #211a4a;
+    --d-p-menu-txt-color: #fffff4;
+    --d-p-menu-active-item-txt-color: #ffffff;
+    --d-p-active-menu-item-bg-color-hover: #807992;
+
+    // Context menu
+    --primary-context-menu-bg-color: #171238;
+    --primary-context-menu-active-bg-color: #211a4d;
+    --primary-opacity-bg: 0px 0px 3px 3px rgb(122, 122, 122, 1);
+
+    //icons
+    --d-p-icon-box-shadow: 3px 1px 30px 3px #b4a9c7;
+    --d-p-icon-box-shadow-hover: 7px 1px 19px 4px #b4a9c7;
+    --d-p-icon-arrow-box-shadow-hover: 3px 1px 19px 4px #b4a9c7;
+
+    //inputs
+    --d-p-input-txt-bg-color: #fff;
+    --d-p-input-txt-color: #212529;
+    --d-p-input-txt-box-shadow-focus: 0px 2px 4px rgba(210, 210, 210, 0.1) !important;
+    --d-p-input-txt-outline-focus: solid rgb(163, 163, 163) 2px !important;
+
+    //Grid
+    --d-p-grid-filter-bg-color: #1e1944;
+    --d-p-grid-filter-font-color: #1e1944;
+    --d-p-grid-selected-row-shadow: 0px 0px 3px 2px #bdb4cd;
+    --d-p-grid-row-bg-color-hover: #241f50;
+}
+
+* {
+    color: var(--primary-text-color);
+}
+
+// position: fixed;
+// overflow-y: scroll;
+// overflow-x: hidden;
+// top: 0px;
+// height: 100%;
+// /* border: solid red 1px; */
+// z-index: 999999999;
+// left: 0px;
+// right: 0px;
+// opacity: 1;
+// background: #171238;
+// Define more variables as needed

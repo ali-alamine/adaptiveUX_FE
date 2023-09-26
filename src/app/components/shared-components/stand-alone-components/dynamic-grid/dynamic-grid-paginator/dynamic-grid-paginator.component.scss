@@ -1,0 +1,51 @@
+.pu-grid-paginator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pu-grid-items-per-page select {
+    // margin-right: 10px;
+}
+
+.pu-grid-pagination {
+    display: flex;
+    align-items: center;
+}
+
+.pu-grid-paginator-button {
+    border-radius: 0.4rem;
+    text-align: center;
+    opacity: 0.5;
+    // padding: 0.2rem;
+    cursor: pointer;
+}
+
+.pu-grid-paginator-button:hover {
+    opacity: 1;
+}
+
+.pu-grid-paginator-lock-btn {
+    cursor: not-allowed;
+}
+
+.pu-grid-page-info {
+    /* ... */
+}
+
+.pu-grid-items-per-page {}
+
+.pu-grid-select-items-per-page {
+    border-radius: 0.4rem;
+    text-align: center;
+    opacity: 0.4;
+    // border: none;
+}
+
+.pu-grid-select-items-per-page:focus {
+    border-radius: 0.4rem;
+    text-align: center;
+    opacity: 1;
+    // border: none;
+}

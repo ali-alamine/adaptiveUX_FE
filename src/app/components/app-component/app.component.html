@@ -1,0 +1,2 @@
+<pu-login *ngIf="!(auth.isLoggedIn$ | async)"></pu-login>
+<router-outlet *ngIf="auth.isLoggedIn$ |async"></router-outlet>
