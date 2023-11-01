@@ -1,0 +1,44 @@
+.pu-grid-form {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem !important;
+    background-color: var(--primary-context-menu-bg-color);
+    opacity: 0.95;
+}
+
+.pu-grid-form-action-header {
+    border-bottom: dashed var(--primary-text-color) 1px;
+}
+
+.pu-close-popup-btn {
+    font-size: 1.5rem;
+}
+
+.pu-grid-form-fields-list {
+    padding: 1rem;
+}
+
+.pu-grid-form-field {
+    padding: 0.5rem;
+    margin: 1rem;
+    color: black;
+    font-weight: bold;
+}
+
+.pu-grid-form-field {
+
+    background-color: var(--d-p-input--bg-color-focus);
+    opacity: 0.9;
+}
+
+.pu-grid-form-field:focus {
+    background-color: #fff;
+    outline: none;
+    color: var(--primary-text-color);
+    font-weight: 600;
+}
+
+.pu-submit-grid-form-btn {
+    outline: none;
+    color: black;
+}

@@ -1,0 +1,24 @@
+.pu-main-nav {
+    width: 100%;
+    height: 2rem;
+    opacity: 0.2;
+    background-color: var(--d-p-bg-color);
+    color: var(--d-p-menu-txt-color);
+}
+
+.pu-main-nav-item {
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.pu-main-nav-item:hover {
+    background-color: var(--d-menu-hover);
+}
+
+.active-link {
+    color: var(--d-p-menu-active-item-txt-color);
+}
+
+.active-link:hover {
+    background-color: var(--d-p-active-menu-item-bg-color-hover);
+}

@@ -1,0 +1,119 @@
+.pu-box-shadow:hover {
+    // box-shadow: 4px -2px 90px 119px #eceaea;
+    cursor: pointer;
+    opacity: 1 !important;
+}
+
+.pu-clickable-icon-shadow {
+    box-shadow: var(--d-p-icon-box-shadow) !important;
+    width: 0px !important;
+}
+
+.pu-clickable-icon-shadow:hover {
+    box-shadow: var(--d-p-icon-box-shadow-hover) !important;
+    width: 0px !important;
+    cursor: pointer;
+}
+
+.pu-clickable-arrow-icon-shadow {
+    box-shadow: var(--d-p-icon-box-shadow) !important;
+    width: 0px !important;
+}
+
+.pu-clickable-arrow-icon-shadow:hover {
+    box-shadow: var(--d-p-icon-arrow-box-shadow-hover) !important;
+    width: 0px !important;
+}
+
+.pu-no-select {
+    user-select: none;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.pu-input-shadow {
+    // outline: red;
+    box-shadow: 0px 2px 4px rgba(244, 8, 8, 0.1) !important;
+    border-radius: 0.4rem;
+    text-align: center;
+    opacity: 0.4;
+    border: none;
+    width: 100% !important;
+}
+
+
+.pu-fadeIn {
+    animation: pu-fadeInAnimation 0.3s;
+    display: block;
+}
+
+.pu-fadeOut {
+    animation: fadeOutAnimation 0.5s;
+    display: block;
+    opacity: 1;
+}
+
+.pu-highlight-text {
+    font-weight: 700;
+}
+
+@keyframes pu-fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.2;
+    }
+
+    40% {
+        opacity: 0.4;
+    }
+
+    60% {
+        opacity: 0.6;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes pu-fadeOutAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+// scroll bars
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #756d88;
+    border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #cfcfcf;
+    // background-color: #555;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #211a4d;
+}

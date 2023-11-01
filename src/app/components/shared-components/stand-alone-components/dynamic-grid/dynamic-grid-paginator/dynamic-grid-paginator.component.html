@@ -1,0 +1,20 @@
+<main>
+  <section class="pu-grid-paginator pu-no-select">
+    <div class="pu-grid-items-per-page">
+      <div class="pu-grid-select-items-per-page">
+        Showing
+        <select [(ngModel)]="_selectedItemPerPage" (ngModelChange)="selectItemPerPage(_selectedItemPerPage)" class="cursor-pointer">
+          <ng-container *ngFor="let item of gridItemPerPageOpt">
+            <option value="{{ item }}">{{ item }}</option>
+          </ng-container>
+        </select>
+        of {{ gridHelper.totalRecords$.getValue() }} records
+      </div>
+    </div>
+    <div class="pu-grid-pagination">
+      <i class="fa-solid fa-angle-left pu-grid-paginator-button pu-clickable-icon-shadow mRight15" [ngClass]="{ 'pu-grid-paginator-lock-btn': currentPage === 1 }" (click)="prevPage()"></i>
+      <div class="pu-grid-page-info">Page {{ currentPage }} of {{ totalPages }}</div>
+      <i class="fa-solid fa-angle-right pu-grid-paginator-button pu-clickable-icon-shadow mLeft5" [ngClass]="{ 'pu-grid-paginator-lock-btn': currentPage === totalPages }" (click)="nextPage()"></i>
+    </div>
+  </section>
+</main>

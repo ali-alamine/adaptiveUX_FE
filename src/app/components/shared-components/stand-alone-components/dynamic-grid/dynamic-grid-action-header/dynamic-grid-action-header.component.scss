@@ -1,0 +1,30 @@
+.pu-grid-global-search {
+    opacity: 0.4;
+    padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--d-p-input-txt-color);
+    background-color: var(--d-p-input-txt-bg-color);
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    height: 1.5rem;
+    opacity: 0.3;
+}
+
+.pu-grid-global-search:focus {
+    opacity: 1;
+    box-shadow: var(--d-p-input-txt-box-shadow-focus);
+    outline: var(--d-p-input-txt-outline-focus);
+    height: auto;
+    opacity: 0.8;
+
+}
+
+.pu-add-new {
+    cursor: pointer;
+}
+
+.pu-selected-grid-style-icon {
+    color: black;
+    box-shadow: var(--d-p-icon-box-shadow);
+}

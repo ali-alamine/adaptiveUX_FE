@@ -1,0 +1,10 @@
+<div #contextMenu class="pu-dynamic-grid-context-menu-wrapper pu-no-select">
+  <div class="pu-dynamic-grid-context-menu-options">
+    <ng-container *ngFor="let option of options">
+      <div (click)="selectContextMenuOption(option)" class="pu-dynamic-grid-context-menu-item">
+        <i class="{{ option.action_icon }}"></i>
+        <span class="mLeft10">{{ option.action_title }}</span>
+      </div>
+    </ng-container>
+  </div>
+</div>

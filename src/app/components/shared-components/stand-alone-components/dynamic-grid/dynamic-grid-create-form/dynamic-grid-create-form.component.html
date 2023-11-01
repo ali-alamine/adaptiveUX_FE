@@ -1,0 +1,42 @@
+<!-- {"in_form": 1, "in_grid": 1, "is_hidden": 0, "attr_order": 1, "attr_width": "", "is_sortable": 1, "is_filterable": 1} -->
+<main class="pu-grid-form">
+  <section class="pu-grid-form-action-header mAuto row">
+    <div class="col-md-12">
+      <div class="row justify-content-end">
+        <div class="col-md-1">
+          <div class="d-flex justify-content-around">
+            <span><i class="fa-regular fa-window-maximize pu-clickable-icon-shadow"></i></span>
+            <span><i (click)="gridHelper.closePopup()" class="fa-solid fa-xmark pu-close-popup-btn pu-clickable-icon-shadow"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pu-grid-form-fields-list d-flex flex-row justify-content-center row mAuto">
+    <ng-container *ngFor="let attr of formAttributes; let i = index">
+      <input
+        *ngIf="attr.attr_type != ATTR_TYPE.SELECT && attr.attr_type != ATTR_TYPE.DATA_LIST"
+        class="col-md-5 pu-grid-form-field"
+        [type]="attr.attr_type === 'text' ? 'search' : attr.attr_type"
+        [placeholder]="setAttributePlaceholder(attr)"
+        [(ngModel)]="attr.attr_entered_value"
+        [attr.attr-id]="attr.attr_id"
+      />
+
+      <select *ngIf="attr.attr_type == ATTR_TYPE.SELECT" class="col-md-5 pu-grid-form-field" [(ngModel)]="selectedValue" (change)="getSelectedValue(attr)" [attr.attr-id]="attr.attr_id">
+        <option [ngValue]="" selected disabled hidden>{{ selectedValue }}</option>
+        <option *ngFor="let option of attr.attr_value_options" [value]="option.attr_value_opt_id">{{ option.attr_value_opt_value }}</option>
+      </select>
+
+      <ng-container *ngIf="attr.attr_type == ATTR_TYPE.DATA_LIST">
+        <input class="col-md-5 pu-grid-form-field" [attr.list]="attr?.attr_fetch_value?.fetch_criteria?.fetch_value" [placeholder]="setAttributePlaceholder(attr)" [(ngModel)]="attr.attr_entered_value" [attr.attr-id]="attr.attr_id" />
+        <datalist [attr.id]="attr?.attr_fetch_value?.fetch_criteria?.fetch_value">
+          <option *ngFor="let item of (gridHelper.fetchableFormAttributesValues$ | async)[getFetchValue(attr)]" [value]="setEntityIDwithAttrID(item.entity_id, attr)">{{ getAttrFetchableContentIDsValues(item, attr) }}</option>
+        </datalist>
+      </ng-container>
+    </ng-container>
+
+    <input type="button" class="pu-submit-grid-form-btn" value="Send" (click)="submitForm()" />
+  </section>
+</main>

@@ -1,0 +1,7 @@
+<div class="pu-main-nav d-flex align-items-center justify-content-around pu-box-shadow">
+  <ng-container *ngFor="let item of routeItems$ | async">
+    <div class="pu-main-nav-item" [routerLink]="item.primary_route_path" routerLinkActive="active-link">
+      {{ item.primary_route_title }}
+    </div>
+  </ng-container>
+</div>
