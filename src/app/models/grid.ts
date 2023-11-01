@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 import * as _ from "lodash";
 
+=======
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 export enum GRID_CONTEXTMENU {
     DELETE = "delete",
     COPY = "copy",
@@ -12,6 +15,7 @@ export const gridItemPerPageOpt: Array<number> = [
     5, 10, 15, 20, 30, 40, 50, 70, 90, 120
 ]
 
+<<<<<<< HEAD
 export function extractGridAttributes(attributes: any[] = []): any[] {
     if (attributes.length === 0) return [];
     const data: any = _.cloneDeep(attributes);
@@ -130,4 +134,21 @@ export function fillFiltersValue(attributes: any, preservedQueries: any) {
     });
 
     return attributes;
+=======
+export function fillFiltersValue(columnNames: any, preservedQueries: any) {
+    const searchQueries = preservedQueries[0]?.queries || [];
+    const colMap = new Map(columnNames.map((col: any) => [col.field_key, col]));
+
+    searchQueries.forEach((searchQuery: any) => {
+        const col: any = colMap.get(searchQuery.field_key);
+        if (col) {
+            col.filterValue = searchQuery.query;
+        } else {
+            // Set filterValue to '' if field_key doesn't exist
+            columnNames.push({ field_key: searchQuery.field_key, filterValue: searchQuery.query });
+        }
+    });
+
+    return columnNames;
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 }

@@ -5,6 +5,7 @@
   <div class="col-lg-12">
     <div class="pu-dynamic-grid">
       <div class="table-responsive">
+<<<<<<< HEAD
         <table #grid class="table table-striped table-sm align-middle" [attr.gridID]="gridHelper.contendID$ | async">
           <thead class="pu-dynamic-grid-header-cell">
             <tr class="pu-no-select">
@@ -13,17 +14,41 @@
                   <div (click)="attr.is_sortable === 1 ? sortColumn(i, attr.attr_key) : ''" class="d-flex align-items-end justify-content-center cursor-pointer">
                     <span>{{ attr.attr_title }}</span>
                     <div *ngIf="attr.is_sortable" class="d-flex flex-column mLeft10">
+=======
+        <table #grid class="table table-striped table-sm align-middle">
+          <thead class="pu-dynamic-grid-header-cell">
+            <tr class="pu-no-select">
+              <ng-container *ngFor="let col of gridHelper.gridCols$ | async; let i = index">
+                <td *ngIf="!col.is_hidden" [style.width]="col.field_width + 'rem'" class="text-center align-top">
+                  <div (click)="col.is_sortable === 1 ? sortColumn(i, col.field_key) : ''" class="d-flex align-items-end justify-content-center cursor-pointer">
+                    <span>{{ col.field_title }}</span>
+                    <div *ngIf="col.is_sortable" class="d-flex flex-column mLeft10">
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
                       <i class="pu-grid-sort-icon fa-solid fa-sort-up pu-sort-up-icon" [ngClass]="{ 'pu-active-sort-icon': selectedColumnIndex === i && sortType == 'ASC' }"></i>
                       <i class="pu-grid-sort-icon pu-sort-none-icon" [ngClass]="{ 'pu-active-sort-none-icon': selectedColumnIndex === i && sortType == 'NONE' }">➖</i>
                       <i class="pu-grid-sort-icon fa-solid fa-sort-down pu-sort-down-icon" [ngClass]="{ 'pu-active-sort-icon': selectedColumnIndex === i && sortType == 'DESC' }"></i>
                     </div>
                   </div>
+<<<<<<< HEAD
                   <input autocomplete="off" *ngIf="attr.is_filterable" type="{{ attr.filter_by }}" [(ngModel)]="attr.filterValue" (ngModelChange)="debouncedSearchColumn(attr.attr_key, attr.filterValue)" class="pu-grid-column-filter" placeholder="Locate" id="column_filter_{{ attr.attr_key }}" />
+=======
+                  <input
+                    autocomplete="off"
+                    *ngIf="col.is_filterable"
+                    type="{{ col.filter_by }}"
+                    [(ngModel)]="col.filterValue"
+                    (ngModelChange)="debouncedSearchColumn(col.field_key, col.filterValue)"
+                    class="pu-grid-column-filter"
+                    placeholder="Locate"
+                    id="column_filter_{{ col.field_key }}"
+                  />
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
                 </td>
               </ng-container>
             </tr>
           </thead>
           <tbody>
+<<<<<<< HEAD
             <tr #tr *ngFor="let row of gridHelper.gridRows$ | async; let i = index" class="pu-grid-row text-center" (contextmenu)="onRowContextMenu($event, row.record, i)" (click)="selectRow(i)" [ngClass]="{ 'pu-selected-row': selectedRowIndex === i }">
               <ng-container *ngFor="let attr of gridHelper.gridAttr$ | async">
                 <ng-container *ngFor="let cell of row.record; let j = index">
@@ -37,6 +62,33 @@
                     <!-- </span> -->
                   </td>
                 </ng-container>
+=======
+            <tr
+              #tr
+              *ngFor="let row of gridHelper.gridRows$ | async; let i = index"
+              class="pu-grid-row text-center"
+              (contextmenu)="onRowContextMenu($event, row, i)"
+              (click)="selectRow(i)"
+              [ngClass]="{ 'pu-selected-row': selectedRowIndex === i }"
+            >
+              <ng-container *ngFor="let col of gridHelper.gridCols$ | async">
+                <td
+                  #td
+                  *ngIf="!col.is_hidden"
+                  (contextmenu)="onCellContextMenu($event, col.field_key, i, td)"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  data-bs-delay="500"
+                  title="{{ row[col.field_key]?.length > 15 ? row[col.field_key] : '' }}"
+                >
+                  <span [ngClass]="{ 'pu-grid-pinned-records': showPinnedRecords(row.is_pinned, col.field_order) }">
+                    <i (click)="unPinRecord(row)" *ngIf="row.is_pinned && col.field_order == 0 && showPinnedRecords(row.is_pinned, col.field_order)" class="fa-solid fa-thumbtack pu-grid-pin-icon"></i>
+                    <span class="text-center pu-grid-cell-text">
+                      {{ row[col.field_key] | trimString : 15 }}
+                    </span>
+                  </span>
+                </td>
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
               </ng-container>
             </tr>
           </tbody>
@@ -55,6 +107,7 @@
   </ng-container>
 </main>
 
+<<<<<<< HEAD
 <ng-container *ngIf="gridHelper.isCreateFormVisible$ | async">
   <div [ngClass]="{ 'pu-fadeIn pu-grid-create-form-wrapper': gridHelper.isCreateFormVisible$.getValue(), 'pu-fadeOut': !gridHelper.isCreateFormVisible$.getValue() }">
     <pu-dynamic-grid-create-form></pu-dynamic-grid-create-form>
@@ -62,3 +115,10 @@
 </ng-container>
 
 <!-- <i (click)="unPinRecord(cell)" *ngIf="cell.is_pinned && attr.field_order == 0 && showPinnedRecords(cell.is_pinned, attr.field_order)" class="fa-solid fa-thumbtack pu-grid-pin-icon"></i> -->
+=======
+<ng-container *ngIf="gridHelper.isPopupVisible$ | async">
+  <div [ngClass]="{ 'pu-fadeIn pu-grid-create-form-wrapper': gridHelper.isPopupVisible$.getValue(), 'pu-fadeOut': !gridHelper.isPopupVisible$.getValue() }">
+    <pu-dynamic-grid-create-form></pu-dynamic-grid-create-form>
+  </div>
+</ng-container>
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e

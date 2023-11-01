@@ -7,7 +7,11 @@ import { GridHelper } from './gridHelper.service';
 import { DynamicGridPaginatorComponent } from './dynamic-grid-paginator/dynamic-grid-paginator.component';
 import * as _ from 'lodash';
 import { DynamicGridContextMenuComponent } from './dynamic-grid-context-menu/dynamic-grid-context-menu.component';
+<<<<<<< HEAD
 import { takeUntil } from 'rxjs';
+=======
+import { skip, takeUntil } from 'rxjs';
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 import { PUObject } from 'src/app/models/shared';
 import { DynamicGridService } from 'src/app/core/services/grid/dynamic-grid.service';
 import { DynamicGridCreateFormComponent } from './dynamic-grid-create-form/dynamic-grid-create-form.component';
@@ -15,11 +19,19 @@ import { DynamicGridCreateFormComponent } from './dynamic-grid-create-form/dynam
   selector: 'pu-dynamic-grid',
   templateUrl: './dynamic-grid.component.html',
   styleUrls: ['./dynamic-grid.component.scss'],
+<<<<<<< HEAD
   standalone: true,
   imports: [
     CommonModule, TrimStringPipe, DynamicGridActionHeaderComponent,
     DynamicGridCreateFormComponent, DynamicGridPaginatorComponent,
     DynamicGridContextMenuComponent, FormsModule]
+=======
+  imports: [
+    CommonModule, TrimStringPipe, DynamicGridActionHeaderComponent,
+    DynamicGridCreateFormComponent, DynamicGridPaginatorComponent,
+    DynamicGridContextMenuComponent, FormsModule],
+  standalone: true
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 })
 
 export class DynamicGridComponent extends PUObject {
@@ -29,16 +41,27 @@ export class DynamicGridComponent extends PUObject {
   sortIcon: string = '';
   sortType: string = 'DESC';
   itemsPerPage!: number;
+<<<<<<< HEAD
   @ViewChild('grid', { static: true }) grid!: ElementRef;
   public debouncedSearchColumn = _.debounce(this.searchColumn.bind(this), 500);
   radio: any = 'radio';
+=======
+  // @ViewChild('tr', { static: true }) tr!: ElementRef;
+  @ViewChild('grid', { static: true }) grid!: ElementRef;
+  public debouncedSearchColumn = _.debounce(this.searchColumn.bind(this), 500);
+  radio: any = 'radio'
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   constructor(@SkipSelf() public gridHelper: GridHelper, @SkipSelf() private gridService: DynamicGridService) {
     super();
   }
 
   ngOnInit() {
     this.gridHelper.removeFocusedElement();
+<<<<<<< HEAD
     this.gridHelper.gridAttr$.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+=======
+    this.gridHelper.gridCols$.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
       (cols: any) => {
         this.selectedRowIndex = -1;
         this.gridHelper.initToolTip();
@@ -69,7 +92,10 @@ export class DynamicGridComponent extends PUObject {
   }
 
   sortColumn(columnIndex: number, field_key: string) {
+<<<<<<< HEAD
     // window.open('http://localhost:4200/layout/supplier', 'window name', 'toolbar=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=400,height=400');
+=======
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
     this.gridHelper.removeFocusedElement();
     this.selectedColumnIndex = columnIndex;
 
@@ -79,8 +105,12 @@ export class DynamicGridComponent extends PUObject {
     if (this.sortType === 'ASC') {
       this.sortType = 'DESC';
     } else if (this.sortType === 'DESC') {
+<<<<<<< HEAD
       this.sortType = 'ASC';
       // this.sortType = 'NONE';
+=======
+      this.sortType = 'NONE';
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
     } else {
       this.sortType = 'ASC';
     }
@@ -114,6 +144,15 @@ export class DynamicGridComponent extends PUObject {
     e.preventDefault();
     cell.id = CopyFieldKey + i;
     this.gridHelper.copyFieldKey$.next({ field_key: CopyFieldKey, i: i });
+<<<<<<< HEAD
+=======
+
+
+    // let cellId: any = "email0";
+    // let cellEl: any = document.getElementById(cellId);
+    // console.log(cellEl, "cellEl")
+    // cellEl.style.fontWeight = 'bold';
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   }
 
   selectRow(i: number) {

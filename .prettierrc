@@ -2,5 +2,9 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "htmlWhitespaceSensitivity": "ignore",
+<<<<<<< HEAD
   "printWidth": 300
+=======
+  "printWidth": 200
+>>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 }
