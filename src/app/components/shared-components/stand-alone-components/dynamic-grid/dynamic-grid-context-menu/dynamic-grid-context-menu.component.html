@@ -1,19 +1,9 @@
 <div #contextMenu class="pu-dynamic-grid-context-menu-wrapper pu-no-select">
   <div class="pu-dynamic-grid-context-menu-options">
     <ng-container *ngFor="let option of options">
-<<<<<<< HEAD
       <div (click)="selectContextMenuOption(option)" class="pu-dynamic-grid-context-menu-item">
         <i class="{{ option.action_icon }}"></i>
         <span class="mLeft10">{{ option.action_title }}</span>
-=======
-      <div
-        (click)="selectContextMenuOption(option)"
-        *ngIf="option.condition.value === '' || option.condition.value == gridHelper.targetRecord$.getValue()[option.condition.key]"
-        class="pu-dynamic-grid-context-menu-item"
-      >
-        <i class="{{ option.icon }}"></i>
-        <span class="mLeft10">{{ option.title }}</span>
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
       </div>
     </ng-container>
   </div>

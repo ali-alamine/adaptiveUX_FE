@@ -4,11 +4,6 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { BASE_URL, HttpMethod, PUObject } from 'src/app/models/shared';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/internal/observable/of';
-<<<<<<< HEAD
-
-=======
-import { throwError } from 'rxjs';
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 @Injectable({
   providedIn: 'root'
 })

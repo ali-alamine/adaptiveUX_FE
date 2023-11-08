@@ -9,7 +9,6 @@ export enum HttpMethod {
     DELETE
 }
 
-<<<<<<< HEAD
 export enum ATTR_TYPE {
     BTN = 'button',
     CHECKBOX = 'checkbox',
@@ -35,8 +34,6 @@ export enum ATTR_TYPE {
     DATA_LIST = 'datalist',
 }
 
-=======
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 
 @Injectable()
 export abstract class PUObject implements OnDestroy {
@@ -50,7 +47,6 @@ export abstract class PUObject implements OnDestroy {
         this.ngUnsubscribe.complete();
     }
 }
-<<<<<<< HEAD
 
 export function getAttrFetchValue(attribute: any): any {
     return attribute?.attr_fetch_value?.fetch_criteria?.fetch_value;
@@ -110,11 +106,6 @@ export function setAttributePlaceholder(attr: any): string {
 export function copyToClipboard(value: string): boolean {
     const textArea = document.createElement('textarea');
     textArea.value = value == null ? 'No value to copy' : value;
-=======
-export function copyToClipboard(value: string): boolean {
-    const textArea = document.createElement('textarea');
-    textArea.value = value;
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 
     // Make the textarea invisible
     textArea.style.position = 'fixed';

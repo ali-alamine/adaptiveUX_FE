@@ -11,7 +11,6 @@ export class DynamicGridService {
   constructor(private puHttp: PuHttpService) {
   }
 
-<<<<<<< HEAD
   addRecord(endPoint: string, params: any) {
     return this.puHttp.fetch(endPoint, params, HttpMethod.POST)
   }
@@ -22,14 +21,6 @@ export class DynamicGridService {
 
   deleteRecord(endPoint: string, params: any) {
     return this.puHttp.fetch(endPoint, params, HttpMethod.POST)
-=======
-  filterGridData(endPoint: string, params: any) {
-    return this.puHttp.fetch(endPoint, params, HttpMethod.POST)
-  }
-
-  deleteRecord(endPoint: string, params: any) {
-    return this.puHttp.fetch(endPoint, params, HttpMethod.DELETE)
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   }
 
   pinRecord(endPoint: string, params: any) {
@@ -40,12 +31,7 @@ export class DynamicGridService {
     return this.puHttp.fetch(endPoint, params, HttpMethod.GET);
   }
 
-<<<<<<< HEAD
   fetchFormFieldsValues(endPoint: string, params: any) {
     return this.puHttp.fetch(endPoint, params, HttpMethod.POST);
-=======
-  addRecord(endPoint: string, params: any) {
-    return this.puHttp.fetch(endPoint, params, HttpMethod.POST)
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   }
 }

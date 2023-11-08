@@ -12,57 +12,36 @@ export class GridHelper extends PUObject {
   private renderer!: Renderer2;
 
   //grid
-<<<<<<< HEAD
   gridAttr$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   gridRows$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   searchParams$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   sortParams$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   contendID$: BehaviorSubject<any> = new BehaviorSubject<any>('');
-=======
-  gridCols$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  gridRows$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  searchParams$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  sortParams$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   //Paginator
   selectedItemsPerPage$: BehaviorSubject<number> = new BehaviorSubject<number>(5);
   selectedCurrentPage$: BehaviorSubject<number> = new BehaviorSubject<number>(1);
   totalRecords$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   gridQueryParams$: BehaviorSubject<any> = new BehaviorSubject<any>([{
-<<<<<<< HEAD
     "queries": [], "sortBy": [], 'gridID': this.contendID$.getValue(),
-=======
-    "queries": [], "sortBy": [],
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
     itemsPerPage: this.selectedItemsPerPage$.getValue(), currentPage: this.selectedCurrentPage$.getValue()
   }]);
 
   //ContextMenu
   showContextMenu$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   contextMenuPos$: BehaviorSubject<any> = new BehaviorSubject<any>({ x: "", y: "" });
-<<<<<<< HEAD
   selectedContextMenuAction$: BehaviorSubject<any> = new BehaviorSubject<any>({});
   contextMenuActions$: BehaviorSubject<any> = new BehaviorSubject<any>({});
-=======
-  contextMenuAction$: BehaviorSubject<any> = new BehaviorSubject<any>({});
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   targetRecord$: BehaviorSubject<any> = new BehaviorSubject<any>({});
   newRecordData$: BehaviorSubject<any> = new BehaviorSubject<any>('');
 
   fillFiltersValue: Function = fillFiltersValue;
-<<<<<<< HEAD
-=======
-  isPopupVisible$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   copyFieldKey$: BehaviorSubject<any> = new BehaviorSubject<any>({ field_key: "", i: "" });
 
   //Styling
   gridCssClasses$: BehaviorSubject<any> = new BehaviorSubject<any>('');
   gridRef$: BehaviorSubject<any> = new BehaviorSubject<any>('');
 
-<<<<<<< HEAD
   //Create Form
   isCreateFormVisible$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   fetchableFormAttributesValues$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
@@ -70,22 +49,14 @@ export class GridHelper extends PUObject {
   //Shared
   attributes$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
-=======
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 
   constructor(rendererFactory: RendererFactory2) {
     super();
     this.renderer = rendererFactory.createRenderer(null, null);
 
-<<<<<<< HEAD
     this.gridAttr$.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
       (attributes: any) => {
         attributes = this.fillFiltersValue(attributes, this.gridQueryParams$.getValue());
-=======
-    this.gridCols$.pipe(takeUntil(this.ngUnsubscribe)).subscribe(
-      (cols: any) => {
-        cols = this.fillFiltersValue(cols, this.gridQueryParams$.getValue());
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
       }
     )
   }
@@ -99,19 +70,11 @@ export class GridHelper extends PUObject {
   }
 
   openPopup() {
-<<<<<<< HEAD
     this.isCreateFormVisible$.next(true);
   }
 
   closePopup() {
     this.isCreateFormVisible$.next(false);
-=======
-    this.isPopupVisible$.next(true);
-  }
-
-  closePopup() {
-    this.isPopupVisible$.next(false);
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   }
 
   highlightCopiedValue() {
@@ -167,11 +130,7 @@ export class GridHelper extends PUObject {
 
   updateGridQueryParams() {
     this.gridQueryParams$.next([{
-<<<<<<< HEAD
       "queries": this.searchParams$.getValue(), "sortBy": this.sortParams$.getValue(), 'gridID': this.contendID$.getValue(),
-=======
-      "queries": this.searchParams$.getValue(), "sortBy": this.sortParams$.getValue(),
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
       "itemsPerPage": this.selectedItemsPerPage$.getValue(), currentPage: this.selectedCurrentPage$.getValue()
     }]);
   }

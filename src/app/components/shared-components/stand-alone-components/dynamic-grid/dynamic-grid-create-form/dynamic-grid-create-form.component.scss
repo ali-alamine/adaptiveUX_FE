@@ -1,27 +1,17 @@
 .pu-grid-form {
     width: 100%;
     height: auto;
-<<<<<<< HEAD
-=======
-    // background-color: #f7f7f7;
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
     border-radius: 0.5rem !important;
     background-color: var(--primary-context-menu-bg-color);
     opacity: 0.95;
 }
 
-<<<<<<< HEAD
 .pu-grid-form-action-header {
     border-bottom: dashed var(--primary-text-color) 1px;
 }
 
 .pu-close-popup-btn {
     font-size: 1.5rem;
-=======
-.pu-close-popup-btn {
-    font-size: 1.5rem;
-    position: fixed;
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 }
 
 .pu-grid-form-fields-list {
@@ -31,7 +21,6 @@
 .pu-grid-form-field {
     padding: 0.5rem;
     margin: 1rem;
-<<<<<<< HEAD
     color: black;
     font-weight: bold;
 }
@@ -52,17 +41,4 @@
 .pu-submit-grid-form-btn {
     outline: none;
     color: black;
-=======
-}
-
-.pu-grid-form-field {
-    background-color: #fff;
-    opacity: 0.3;// #1e1944;
-}
-
-.pu-grid-form-field:focus {
-    background-color: #494376;
-    color: var(--primary-text-color);
-    font-weight: 600;
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 }

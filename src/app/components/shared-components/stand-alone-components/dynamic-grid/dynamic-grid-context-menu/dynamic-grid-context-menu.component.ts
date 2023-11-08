@@ -15,7 +15,6 @@ export class DynamicGridContextMenuComponent extends PUObject {
 
   constructor(@SkipSelf() public gridHelper: GridHelper) {
     super();
-<<<<<<< HEAD
     this.options = this.gridHelper.contextMenuActions$.getValue();
     console.log(this.gridHelper.contextMenuActions$.getValue(), "this.gridHelper.contextMenuActions$.getValue()");
   }
@@ -28,16 +27,6 @@ export class DynamicGridContextMenuComponent extends PUObject {
   //   { action_id: 5, action_key: 'delete', "title": 'Delete', icon: 'fa-solid fa-trash', condition: '' },
   //   { action_id: 6, action_key: 'edit', "title": 'Edit', icon: 'fa-solid fa-pen-to-square', condition: '' },
   // ];
-=======
-  }
-  options: Array<any> = [
-    { id: 1, 'key': 'copy', "title": 'Copy', icon: 'fa-solid fa-copy', condition: '' },
-    { id: 3, 'key': 'pin', "title": 'Pin', icon: 'fa-solid fa-thumbtack', condition: { key: 'is_pinned', value: 0 } },
-    { id: 4, 'key': 'unpin', "title": 'Unpin', icon: 'fa-solid fa-link-slash', condition: { key: 'is_pinned', value: 1 } },
-    { id: 5, 'key': 'delete', "title": 'Delete', icon: 'fa-solid fa-trash', condition: '' },
-    { id: 6, 'key': 'edit', "title": 'Edit', icon: 'fa-solid fa-pen-to-square', condition: '' },
-  ];
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 
   ngAfterViewInit() {
     this.getContextMenu();
@@ -56,10 +45,6 @@ export class DynamicGridContextMenuComponent extends PUObject {
   }
 
   selectContextMenuOption(option: Object) {
-<<<<<<< HEAD
     this.gridHelper.selectedContextMenuAction$.next(option);
-=======
-    this.gridHelper.contextMenuAction$.next(option);
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   }
 }

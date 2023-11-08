@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- {"in_form": 1, "in_grid": 1, "is_hidden": 0, "attr_order": 1, "attr_width": "", "is_sortable": 1, "is_filterable": 1} -->
 <main class="pu-grid-form">
   <section class="pu-grid-form-action-header mAuto row">
@@ -39,18 +38,5 @@
     </ng-container>
 
     <input type="button" class="pu-submit-grid-form-btn" value="Send" (click)="submitForm()" />
-=======
-<main class="pu-grid-form popup">
-  <section class="d-flex justify-content-end">
-    <i (click)="gridHelper.closePopup()" class="fa-solid fa-xmark pu-close-popup-btn pu-clickable-icon-shadow mRight20"></i>
-  </section>
-
-  <section class="pu-grid-form-fields-list d-flex flex-column">
-    <ng-container *ngFor="let field of gridFormFields; let i = index">
-      <input class="pu-grid-form-field" *ngIf="field.is_in_form" [type]="field.field_type" [placeholder]="field.field_title" [(ngModel)]="field.filled_value" />
-    </ng-container>
-
-    <input type="button" value="submit" (click)="submitForm()" />
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
   </section>
 </main>

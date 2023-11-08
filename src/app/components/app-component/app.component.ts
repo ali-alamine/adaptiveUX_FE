@@ -8,6 +8,10 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class AppComponent {
   title = 'pulseCore';
   constructor(public auth: AuthService){
-    
+    if (this.auth.getSavedSession() != null) {
+      this.auth.isLoggedIn$.next(true);
+    }else{
+      this.auth.isLoggedIn$.next(false);
+    }
   }
 }

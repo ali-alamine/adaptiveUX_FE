@@ -1,39 +1,42 @@
 import { Injectable } from '@angular/core';
 import { PuHttpService } from './pu-http.service';
-<<<<<<< HEAD
 import { map, tap } from 'rxjs/operators';
 import { HttpMethod } from 'src/app/models/shared';
 import { BehaviorSubject } from 'rxjs';
-=======
-import { map } from 'rxjs/internal/operators/map';
-import { HttpMethod } from 'src/app/models/shared';
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
+import { AuthService } from '../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class MetadataService {
-<<<<<<< HEAD
   routes$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-=======
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
 
-  constructor(private puHttp: PuHttpService) {
-  }
+  constructor(private auth: AuthService, private puHttp: PuHttpService) { }
 
-<<<<<<< HEAD
   getRoutes() {
     return this.puHttp.fetch('get_routes').pipe(
       tap((routeItems: any) => this.routes$.next(routeItems))
-=======
-  getMenu() {
-    return this.puHttp.fetch('get_menu_items').pipe(
-      map((menuItems: any) => menuItems.sort((a: any, b: any) => a.order - b.order))
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
     );
   }
 
-  getFormFields(endPoint: string, params: FormData) {
-    return this.puHttp.fetch(endPoint, params, HttpMethod.POST)
+  getVisitedMenuItemAfterLogin(menuItem: any, interactionType: any) {
+
+    // if (this.auth.isLandingPageNavigationChanged()) {
+      const user_id: any = this.auth.user$.getValue()[0].user_id;
+      let formData = new FormData();
+      formData.append('user_id', user_id);
+      formData.append('landing_page', 'Dashboard');
+      formData.append('visited_menu_item_id', menuItem.primary_route_id);
+      formData.append('interaction_type', interactionType);
+
+      return this.puHttp.fetch('collect_landing_page', formData, HttpMethod.POST).subscribe(
+        (success: any) => {
+          console.log(success, "success");
+          this.auth.setLandingPageNavigation();
+        }
+      )
+    // } else {
+    //   return;
+    // }
   }
 
 }

@@ -25,10 +25,6 @@ export class DynamicGridActionHeaderComponent extends PUObject {
       this.gridHelper.gridRef$.pipe(takeUntil(this.ngUnsubscribe), take(1)).subscribe(
         (data: any) => {
           const gridClasses: any = Array.from(data?.nativeElement?.classList);
-<<<<<<< HEAD
-=======
-          console.log(gridClasses, ">> FIRST LOAD <<")
->>>>>>> 8824036171a896ab31ac98ca476ad080a7e08b5e
           this.gridHelper.gridCssClasses$.next(gridClasses)
         }
       )
