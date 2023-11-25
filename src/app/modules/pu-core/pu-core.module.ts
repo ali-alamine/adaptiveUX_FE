@@ -7,7 +7,7 @@ import { MetadataService } from 'src/app/core/services/singleton/metadata.servic
 import { DynamicGridService } from 'src/app/core/services/grid/dynamic-grid.service';
 import { DynamicContentComponent } from '@components/core-components/dynamic-content/dynamic-content.component';
 import { RouterService } from 'src/app/core/services/singleton/router.service';
-
+import { FeedbackNotificationComponent } from '@components/shared-components/notification/feedback-notification/feedback-notification.component';
 import { Router, Route } from '@angular/router';
 import { skip } from 'rxjs';
 
@@ -26,6 +26,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   declarations: [
+    
   ]
 })
 
@@ -79,6 +80,7 @@ export class PuRoutingCoreModule {
   declarations: [
     LayoutComponent,
     MainNavComponent,
+    FeedbackNotificationComponent
   ],
   imports: [
     CommonModule,

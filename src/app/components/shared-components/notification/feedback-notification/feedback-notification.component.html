@@ -1,1 +1,16 @@
-<p>feedback-notification works!</p>
+<main>
+    <div class="pu-feedback-not fade-in-out-x sliding-in" #notiFeedback>
+        <span style="color: black !important">Header</span><br>
+        <span style="color: black !important">Notification Body</span><br>
+        <span style="color: black !important">Footer</span>
+        <hr>
+        <!-- Thumb up and thumb down buttons -->
+        <div class="pu-thumbs-feedback">
+            <span>Notification Feedback Position</span><br>
+            <div class="d-flex flex-row justify-content-center">
+                <p class="thumb" (click)="onThumbUpClick()">👍</p>
+                <p class="thumb" (click)="onThumbDownClick()">👎</p>
+            </div>
+        </div>
+    </div>
+</main>

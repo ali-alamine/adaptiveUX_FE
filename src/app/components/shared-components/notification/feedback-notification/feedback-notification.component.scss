@@ -1,0 +1,72 @@
+.pu-feedback-not {
+    position: absolute;
+    // top: 0;
+    // right: 0;
+    border: solid black 1px;
+    width: 300px;
+    min-height: 100px;
+    background-color: white;
+    border-radius: 10px;
+    color: black !important;
+    text-align: center;
+    vertical-align: middle;
+    // opacity: 0;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+}
+
+.top-left {
+    top: 0;
+    left: 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+.pu-thumbs-feedback {
+    height: 50px;
+    margin-top: -20px;
+    padding: -20px;
+}
+
+.thumb {
+    cursor: pointer;
+}
+
+.thumb:hover {
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+}
+
+.fade-in-out {
+    opacity: 0;
+    /* Start with transparency */
+    transition: opacity 0.5s ease-in-out;
+    /* Add a smooth transition effect */
+}
+
+.fade-in-out.active {
+    opacity: 1;
+    /* Fully visible when the 'active' class is applied */
+}
+
+.sliding-in {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.sliding-in.active {
+    opacity: 1;
+    transform: translateY(0);
+}
