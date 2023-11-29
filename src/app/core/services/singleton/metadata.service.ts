@@ -21,19 +21,20 @@ export class MetadataService {
   getVisitedMenuItemAfterLogin(menuItem: any, interactionType: any) {
 
     // if (this.auth.isLandingPageNavigationChanged()) {
-      const user_id: any = this.auth.user$.getValue()[0].user_id;
-      let formData = new FormData();
-      formData.append('user_id', user_id);
-      formData.append('landing_page', 'Dashboard');
-      formData.append('visited_menu_item_id', menuItem.primary_route_id);
-      formData.append('interaction_type', interactionType);
+    const user: any = this.auth.user$.getValue();
+    const user_id: any = user.user_data[0].user_id;
+    let formData = new FormData();
+    formData.append('user_id', user_id);
+    formData.append('landing_page', 'Dashboard');
+    formData.append('visited_menu_item_id', menuItem.primary_route_id);
+    formData.append('interaction_type', interactionType);
 
-      return this.puHttp.fetch('collect_landing_page', formData, HttpMethod.POST).subscribe(
-        (success: any) => {
-          console.log(success, "success");
-          this.auth.setLandingPageNavigation();
-        }
-      )
+    return this.puHttp.fetch('collect_landing_page', formData, HttpMethod.POST).subscribe(
+      (success: any) => {
+        console.log(success, "success");
+        this.auth.setLandingPageNavigation();
+      }
+    )
     // } else {
     //   return;
     // }

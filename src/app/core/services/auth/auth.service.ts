@@ -4,9 +4,11 @@ import { BehaviorSubject } from 'rxjs';
 import { PuHttpService } from 'src/app/core/services/singleton/pu-http.service';
 import { HttpMethod } from 'src/app/models/shared';
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   isLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   user$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -36,6 +38,7 @@ export class AuthService {
   }
 
   validateUser(user: any) {
+    this.clearSession();
     if (this.getSavedSession() == null) {
 
       return this.fetchAuth('login', user).pipe(
