@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class LoginComponent {
   constructor(private router: Router, public auth: AuthService, private fb: FormBuilder) { }
   loginForm!: UntypedFormGroup;
+  isNewUser: boolean = false;
 
   ngOnInit() {
     this.loginForm = new UntypedFormGroup({

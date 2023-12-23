@@ -8,6 +8,7 @@ import { GRID_CONTEXTMENU, restructureGridData, extractGridAttributes, getContex
 import { PUObject, copyToClipboard } from 'src/app/models/shared';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ATTR_TYPE, restructureDataForList } from 'src/app/models/shared';
+import { PuNotificationService } from 'src/app/core/services/pu-notification.service';
 @Component({
   selector: 'pu-dynamic-content',
   templateUrl: './dynamic-content.component.html',
@@ -22,7 +23,7 @@ export class DynamicContentComponent extends PUObject {
   extractGridAttributes: Function = extractGridAttributes;
   restructureDataForList: Function = restructureDataForList;
   routerData: any = this.router.snapshot.data;
-  constructor(public router: ActivatedRoute, @SkipSelf() private gridService: DynamicGridService, @SkipSelf() public gridHelper: GridHelper) {
+  constructor(public router: ActivatedRoute, @SkipSelf() private gridService: DynamicGridService, @SkipSelf() public gridHelper: GridHelper, @SkipSelf() public notiServ: PuNotificationService) {
     super();
     this.gridHelper.contendID$.next(this.routerData.contentID);
 
@@ -51,6 +52,7 @@ export class DynamicContentComponent extends PUObject {
       {
         next: (isVisible: boolean) => {
           if (isVisible) {
+            console.log(this.gridHelper.attributes$.getValue(), '>>>>>>>>>>>>> this.gridHelper.attributes$.getValue() <<<<<<<<<<<<<<<')
             let fetchableAttributes: Array<any> = this.gridHelper.attributes$.getValue()
               .filter((attr: any) => attr?.attr_fetch_value !== null && attr.in_form == 1)
               .map((attr: any) => attr?.attr_fetch_value?.fetch_criteria);
@@ -84,6 +86,7 @@ export class DynamicContentComponent extends PUObject {
           this.gridHelper.gridAttr$.next(extractGridAttributes(response?.attributes).filter((attr: any) => attr.in_grid == 1));
           this.gridHelper.attributes$.next(extractGridAttributes(response?.attributes));
           this.gridHelper.gridRows$.next(_.cloneDeep(gridData));
+          console.log(getContextMenuActions(response?.content_actions), ' getContextMenuActions(response?.content_actions) ')
           this.gridHelper.contextMenuActions$.next(getContextMenuActions(response?.content_actions));
           // this.gridHelper.contentID$.next(response.content_id);
           // this.gridHelper.totalRecords$.next(response.totalRecords);
@@ -102,7 +105,6 @@ export class DynamicContentComponent extends PUObject {
   addNewGridRecord() {
     this.gridHelper.newRecordData$.pipe(takeUntil(this.ngUnsubscribe), skip(1)).subscribe(
       (data: any) => {
-        console.log(data, " >>> record data <<<<")
         this.gridService.addRecord('add_dynamicGrid_record', data).subscribe({
           next: (data: any) => {
             this.fetchGridFilters();
@@ -131,13 +133,14 @@ export class DynamicContentComponent extends PUObject {
               formData.append('entityID', entityID);
               formData.append('contentID', contentID);
               formData.append('actionID', action_id);
-              for(let i=0;i<record.length;i++){
+              for (let i = 0; i < record.length; i++) {
                 formData.append('record[]', JSON.stringify(record[i]));
               }
 
               this.gridService.deleteRecord('delete_record', formData).subscribe({
                 next: (data) => {
                   this.fetchGridFilters();
+                  this.notiServ.toggleFeedbackNotif$.next(true)
                 },
                 error: (data: any) => {
                   alert('Something went wrong')

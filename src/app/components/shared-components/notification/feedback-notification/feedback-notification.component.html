@@ -1,16 +1,31 @@
-<main>
-    <div class="pu-feedback-not fade-in-out-x" #notiFeedback>
+<main >
+    <div *ngIf="isNotifiDisplayed" class="pu-feedback-not" #notiFeedback>
+        <div (click)="closeNotif()" style="cursor: pointer; font-weight: bold; font-size: 20px;" class="d-flex justify-content-end cursiou">x</div>
         <span style="color: black !important">Header</span><br>
         <span style="color: black !important">Notification Body</span><br>
         <span style="color: black !important">Footer</span>
-        <hr>
-        <!-- Thumb up and thumb down buttons -->
+        {{(posStyle | async)?.user_style_feedback }} - {{(appearanceStyle | async)?.user_style_feedback}}
+
         <div class="pu-thumbs-feedback">
-            <span>Notification Feedback Position</span><br>
-            <div class="d-flex flex-row justify-content-center">
-                <p class="thumb" (click)="onThumbUpClick()">👍</p>
-                <p class="thumb" (click)="onThumbDownClick()">👎</p>
-            </div>
+            <ng-container *ngIf="(posStyle | async)?.user_style_feedback != 2 && !posUserFeedback">
+                <hr>
+                <span>Notification Feedback Position</span><br>
+                <div class="d-flex flex-row justify-content-center">
+                    <p class="thumb" (click)="onThumbClick('pos',2)">👍</p>
+                    <p class="thumb" (click)="onThumbClick('pos',-1)">👎</p>
+                </div>
+            </ng-container>
+
+            <ng-container
+                *ngIf="(appearanceStyle | async)?.user_style_feedback !=2 && posUserFeedback && !appeaUserFeedback">
+                <hr>
+                <span>Notification Feedback Appearance</span><br>
+                <div class="d-flex flex-row justify-content-center">
+                    <p class="thumb" (click)="onThumbClick('appearance',2)">👍</p>
+                    <p class="thumb" (click)="onThumbClick('appearance',-1)">👎</p>
+                </div>
+            </ng-container>
+
         </div>
     </div>
 </main>

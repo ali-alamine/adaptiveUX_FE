@@ -1,21 +1,24 @@
 .pu-feedback-not {
     position: absolute;
-    // top: 0;
-    // right: 0;
     border: solid black 1px;
     width: 300px;
-    min-height: 100px;
+    min-height: 135px;
     background-color: white;
     border-radius: 10px;
     color: black !important;
     text-align: center;
     vertical-align: middle;
-    // opacity: 0;
+    z-index: 99999;
 }
 
 .top-right {
     top: 0;
     right: 0;
+}
+
+.center{
+    top:40%;
+    right:40%;
 }
 
 .top-left {

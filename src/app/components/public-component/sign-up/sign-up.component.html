@@ -1,0 +1,19 @@
+<form [formGroup]="userRegistrationForm">
+    <label for="roleName">Role Name:</label>
+    <select formControlName="role_id" id="roleName">
+        <ng-container *ngFor="let role of userRoles$ | async">
+            <option value="{{role.role_id}}">{{role.role_name}}</option>
+        </ng-container>
+    </select>
+
+    <label for="username">Username:</label>
+    <input type="text" formControlName="username" id="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" formControlName="password" id="password" required>
+
+    <label for="email">Email:</label>
+    <input type="email" formControlName="email" id="email" required>
+
+    <button type="button" (click)="createUser()">Sign Up</button>
+</form>

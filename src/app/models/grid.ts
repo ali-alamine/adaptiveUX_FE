@@ -45,6 +45,7 @@ function sortRecordsByAttrOrder(inputData: any) {
 }
 
 export function getContextMenuActions(actions: any[] = []) {
+    console.log(actions, ' from getContextMenuActions')
 
     if (actions.length === 0) return [];
 

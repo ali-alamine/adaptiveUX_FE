@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import * as _ from 'lodash';
 import { DynamicGridService } from 'src/app/core/services/grid/dynamic-grid.service';
 import { ATTR_TYPE, setAttributePlaceholder, getAttrFetchValue, getAttrFetchableContentIDsValues } from 'src/app/models/shared';
-
+import { PuNotificationService } from 'src/app/core/services/pu-notification.service';
 @Component({
   selector: 'pu-dynamic-grid-create-form',
   standalone: true,
@@ -13,15 +13,17 @@ import { ATTR_TYPE, setAttributePlaceholder, getAttrFetchValue, getAttrFetchable
   templateUrl: './dynamic-grid-create-form.component.html',
   styleUrls: ['./dynamic-grid-create-form.component.scss']
 })
+
 export class DynamicGridCreateFormComponent {
+
   formAttributes: any = _.cloneDeep(this.gridHelper.attributes$.getValue()).filter((attr: any) => attr.in_form === 1);
   public readonly ATTR_TYPE = ATTR_TYPE;
   setAttributePlaceholder: Function = setAttributePlaceholder;
   getFetchValue: Function = getAttrFetchValue;
   getAttrFetchableContentIDsValues: Function = getAttrFetchableContentIDsValues;
-  selectedValue: any = this.formAttributes.filter((attr: any) => attr.attr_type === 'select')[0]?.attr_type_placeholder;
+  selectedValue: any = this.formAttributes.filter((attr: any) => attr.attr_type === ATTR_TYPE.SELECT)[0]?.attr_type_placeholder;
 
-  constructor(@SkipSelf() public gridHelper: GridHelper, @SkipSelf() public gridService: DynamicGridService) {
+  constructor(@SkipSelf() public gridHelper: GridHelper, @SkipSelf() public gridService: DynamicGridService, @SkipSelf() public notiServ: PuNotificationService) {
     this.formAttributes.sort((a: any, b: any) => a.attr_form_order - b.attr_form_order);
   }
 
@@ -31,15 +33,12 @@ export class DynamicGridCreateFormComponent {
   }
 
   getSelectPlaceHolder(attr: any) {
-    // this.selectedValue = 'test 2' //attr?.attr_type_placeholder;
-    console.log(this.formAttributes, "formAttributes")
     this.selectedValue = this.formAttributes[0].attr_type_placeholder;
   }
 
   getSelectedValue(attr: any) {
     console.log(this.selectedValue, "getSelectedValue");
     attr.attr_entered_value = this.selectedValue;
-
   }
 
   submitForm() {
@@ -53,5 +52,7 @@ export class DynamicGridCreateFormComponent {
     formData.append('contentID', this.gridHelper.contendID$.getValue());
     console.log('userValues', userValues);
     this.gridHelper.newRecordData$.next(formData);
+    this.notiServ.toggleFeedbackNotif$.next(true);
   }
+
 }

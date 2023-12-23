@@ -1,5 +1,5 @@
 <div class="container-fluid pu-main-wrapper">
-  <pu-feedback-notification *ngIf="notifService.toggleFeedbackNotif"></pu-feedback-notification>
+  <pu-feedback-notification *ngIf="notifService.toggleFeedbackNotif$ | async"></pu-feedback-notification>
   <div class="row">
     <div class="col-md-12 pu-main-nav-wrapper">
       <pu-main-nav></pu-main-nav>

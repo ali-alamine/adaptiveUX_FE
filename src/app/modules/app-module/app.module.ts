@@ -11,11 +11,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CorsInterceptor } from 'src/app/core/services/cors-interceptor';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Routes, RouterModule } from '@angular/router';
+import { SignUpComponent } from '@components/public-component/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

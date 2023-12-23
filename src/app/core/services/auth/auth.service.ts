@@ -14,7 +14,7 @@ export class AuthService {
   user$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(private puHttp: PuHttpService, private router: Router) {
-    this.user$.next(JSON.parse(this.getSavedSession() || '{}'));
+    this.user$.next(this.getSavedSession() || null);
   }
 
   fetchAuth(endPoint: string, params: any): any {
@@ -26,8 +26,13 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  createNewUser(data: any) {
+
+  }
+
   getSavedSession() {
-    return localStorage.getItem('user');
+    const user: any = localStorage.getItem('user');
+    return JSON.parse(user);
   }
 
   clearSession() {
@@ -65,7 +70,7 @@ export class AuthService {
   }
 
   logout() {
-    this.clearSession();
     this.router.navigate(['login']);
+    this.clearSession();
   }
 }

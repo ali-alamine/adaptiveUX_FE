@@ -5,7 +5,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class PuNotificationService {
-  toggleFeedbackNotif: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  toggleFeedbackNotif$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  displayNotifTime: any = 20000;
   constructor() { }
 
 
