@@ -3,11 +3,13 @@ import { BehaviorSubject, distinctUntilChanged, takeLast } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { PuNotificationService } from 'src/app/core/services/pu-notification.service';
 import { MetadataService } from 'src/app/core/services/singleton/metadata.service';
+
 @Component({
   selector: 'pu-feedback-notification',
   templateUrl: './feedback-notification.component.html',
   styleUrls: ['./feedback-notification.component.scss']
 })
+
 export class FeedbackNotificationComponent {
   @ViewChild('notiFeedback') notiFeedback!: ElementRef;
 
@@ -21,20 +23,28 @@ export class FeedbackNotificationComponent {
   constructor(@SkipSelf() private auth: AuthService, @SkipSelf() private metaServ: MetadataService, @SkipSelf() public notiServ: PuNotificationService) {
 
     this.isNotifiDisplayed = true;
-    let user: any = localStorage.getItem('user');
+    let user: any = localStorage.getItem('user'); 
     this.user_style = this.auth.user$.getValue()?.styles || JSON.parse(user)?.styles || [];
 
+    for (const record of this.user_style) {
 
-      for (const record of this.user_style) {
-        if (record.style_type === 'appearance') {
-          this.appearanceStyle.next(record);
-        } else if (record.style_type === 'pos') {
-          this.posStyle.next(record);
-          if (record.user_style_feedback == 2) {
-            this.posUserFeedback = true;
-          }
+      if (record.style_type === 'appearance') {
+        this.appearanceStyle.next(record);
+
+        if (record.user_style_feedback == 2) {
+          this.appeaUserFeedback = true;
         }
       }
+
+      else if (record.style_type === 'pos') {
+        this.posStyle.next(record);
+
+        if (record.user_style_feedback == 2) {
+          this.posUserFeedback = true;
+        }
+
+      }
+    }
 
 
     this.notiServ.toggleFeedbackNotif$.pipe(
@@ -150,7 +160,7 @@ export class FeedbackNotificationComponent {
 
       this.isNotifiDisplayed = false;
     });
-    
+
   }
 
 }

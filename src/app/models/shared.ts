@@ -57,7 +57,7 @@ export function getAttrFetchableContentIDsValues(item: any, attr: any): any {
     // console.log(contentIDs, "contentIDs")
     let displayedValue = '';
     for (let i = 0; i < contentIDs.length; i++) {
-        if(item[contentIDs[i]]){
+        if (item[contentIDs[i]]) {
             displayedValue += item[contentIDs[i]] + ' ';
         }
     }
@@ -65,7 +65,16 @@ export function getAttrFetchableContentIDsValues(item: any, attr: any): any {
 }
 
 export function setDataListID(attr: any): any {
-   return attr?.attr_fetch_value?.fetch_criteria?.fetch_value;
+    return attr?.attr_fetch_value?.fetch_criteria?.fetch_value;
+}
+
+export function getRandomInt(min: any, max: any) {
+    // Use Math.floor() to round down and Math.random() to generate a random decimal
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export function minutesToTimeSpan(minutes: any) {
+    return minutes * 60 * 1000; // Convert minutes to milliseconds
 }
 
 export function restructureDataForList(param: any): Array<any> {

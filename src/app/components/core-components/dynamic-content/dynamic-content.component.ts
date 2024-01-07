@@ -2,19 +2,20 @@ import { Component, SkipSelf } from '@angular/core';
 import { DynamicGridComponent } from '@components/shared-components/stand-alone-components/dynamic-grid/dynamic-grid.component';
 import { GridHelper } from '@components/shared-components/stand-alone-components/dynamic-grid/gridHelper.service';
 import * as _ from 'lodash';
-import { skip, takeUntil } from 'rxjs';
+import { skip, takeUntil, take, takeLast } from 'rxjs';
 import { DynamicGridService } from 'src/app/core/services/grid/dynamic-grid.service';
 import { GRID_CONTEXTMENU, restructureGridData, extractGridAttributes, getContextMenuActions } from 'src/app/models/grid';
 import { PUObject, copyToClipboard } from 'src/app/models/shared';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ATTR_TYPE, restructureDataForList } from 'src/app/models/shared';
 import { PuNotificationService } from 'src/app/core/services/pu-notification.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'pu-dynamic-content',
   templateUrl: './dynamic-content.component.html',
   standalone: true,
   styleUrls: ['./dynamic-content.component.scss'],
-  imports: [DynamicGridComponent]
+  imports: [DynamicGridComponent, CommonModule]
 })
 export class DynamicContentComponent extends PUObject {
   private readonly GRID_CONTEXTMENU = GRID_CONTEXTMENU;
@@ -23,9 +24,20 @@ export class DynamicContentComponent extends PUObject {
   extractGridAttributes: Function = extractGridAttributes;
   restructureDataForList: Function = restructureDataForList;
   routerData: any = this.router.snapshot.data;
+  lastSegment: any;
   constructor(public router: ActivatedRoute, @SkipSelf() private gridService: DynamicGridService, @SkipSelf() public gridHelper: GridHelper, @SkipSelf() public notiServ: PuNotificationService) {
     super();
     this.gridHelper.contendID$.next(this.routerData.contentID);
+
+    const currentRoute = this.router.snapshot;
+
+    // Retrieve the URL segments of the route
+    const urlSegments = currentRoute.url;
+
+    // Get the last segment of the route
+    this.lastSegment = urlSegments[urlSegments.length - 1].path;
+
+    console.log(this.lastSegment, ' >>>>>>>> lastSegment')
 
   }
 
@@ -48,7 +60,7 @@ export class DynamicContentComponent extends PUObject {
   }
 
   fetchFormFieldsValues() {
-    this.gridHelper.isCreateFormVisible$.subscribe(
+    this.gridHelper.isCreateFormVisible$.pipe(takeLast(1)).subscribe(
       {
         next: (isVisible: boolean) => {
           if (isVisible) {

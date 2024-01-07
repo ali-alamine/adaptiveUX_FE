@@ -11,6 +11,8 @@ import { takeUntil } from 'rxjs';
 import { PUObject } from 'src/app/models/shared';
 import { DynamicGridService } from 'src/app/core/services/grid/dynamic-grid.service';
 import { DynamicGridCreateFormComponent } from './dynamic-grid-create-form/dynamic-grid-create-form.component';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+
 @Component({
   selector: 'pu-dynamic-grid',
   templateUrl: './dynamic-grid.component.html',
@@ -32,7 +34,7 @@ export class DynamicGridComponent extends PUObject {
   @ViewChild('grid', { static: true }) grid!: ElementRef;
   public debouncedSearchColumn = _.debounce(this.searchColumn.bind(this), 500);
   radio: any = 'radio';
-  constructor(@SkipSelf() public gridHelper: GridHelper, @SkipSelf() private gridService: DynamicGridService) {
+  constructor(@SkipSelf() public gridHelper: GridHelper, @SkipSelf() private gridService: DynamicGridService, @SkipSelf() public auth: AuthService) {
     super();
   }
 
@@ -48,6 +50,12 @@ export class DynamicGridComponent extends PUObject {
 
   ngAfterViewInit() {
     this.gridHelper.gridRef$.next(this.grid);
+    setTimeout(() => {
+      let user: any = this.auth.user$.getValue();
+      console.log(user.grid_style, '>>> user.grid_style')
+      this.gridHelper.gridRef$.getValue().nativeElement.classList.add(user.grid_style);
+    }, 10);
+
   }
 
   searchColumn(field_key: string, query: any) {

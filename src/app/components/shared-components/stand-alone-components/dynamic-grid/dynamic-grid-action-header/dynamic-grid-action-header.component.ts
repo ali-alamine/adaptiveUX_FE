@@ -14,9 +14,9 @@ import { PUObject } from 'src/app/models/shared';
 export class DynamicGridActionHeaderComponent extends PUObject {
   gridStyleOptions: Array<any> = [
     { id: 1, iconClass: 'fa-border-none', gridClass: 'table-borderless', removeClass: 'table-bordered' },
-    { id: 1, iconClass: 'fa-border-all', gridClass: 'table-bordered', removeClass: 'table-borderless' },
-    // { id: 1, iconClass: 'fa-grip-lines', gridClass: '' },  
-    { id: 1, iconClass: 'fa-maximize', gridClass: 'table-maximize' },
+    { id: 2, iconClass: 'fa-border-all', gridClass: 'table-bordered', removeClass: 'table-borderless' },
+    { id: 3, iconClass: 'fa-maximize', gridClass: 'table-maximize' },
+    // { id: 4, iconClass: 'fa-grip-lines', gridClass: '' },  
   ]
   constructor(@SkipSelf() public gridHelper: GridHelper) {
     super();

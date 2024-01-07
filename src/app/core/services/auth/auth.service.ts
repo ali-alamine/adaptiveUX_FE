@@ -32,7 +32,7 @@ export class AuthService {
 
   getSavedSession() {
     const user: any = localStorage.getItem('user');
-    return JSON.parse(user);
+    return JSON.parse(user) || null;
   }
 
   clearSession() {

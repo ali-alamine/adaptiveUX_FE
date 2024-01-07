@@ -88,6 +88,7 @@ export class GridHelper extends PUObject {
   }
 
   toggleGridClass(iconClasses: any, i: any) {
+    console.log(iconClasses.gridClass, '>>>>>>>> iconClasses.gridClass <<<<<<<')
     let gridClasses: any = Array.from(this.gridRef$.getValue()?.nativeElement?.classList);
     if (gridClasses.includes(iconClasses.gridClass)) {
       this.gridRef$.getValue().nativeElement.classList.remove(iconClasses.gridClass);

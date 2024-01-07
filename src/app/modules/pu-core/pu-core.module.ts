@@ -9,7 +9,7 @@ import { DynamicContentComponent } from '@components/core-components/dynamic-con
 import { RouterService } from 'src/app/core/services/singleton/router.service';
 import { FeedbackNotificationComponent } from '@components/shared-components/notification/feedback-notification/feedback-notification.component';
 import { Router, Route } from '@angular/router';
-import { skip } from 'rxjs';
+import { skip, take } from 'rxjs';
 
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   declarations: [
-    
+
   ]
 })
 
@@ -41,9 +41,9 @@ export class PuRoutingCoreModule {
     // this.metadataService
 
     const apiRoutes: any = [];
-    this.metadataService.routes$.pipe(skip(1)).subscribe(
+    this.metadataService.routes$.pipe(skip(1), take(1)).subscribe(
       (routesData: any) => {
-        // console.log(routesData, ">>>>>  routes  <<<<<<");
+        console.log('here we go')
 
         for (let i = 0; i < routesData.length; i++) {
           let route: any = {
